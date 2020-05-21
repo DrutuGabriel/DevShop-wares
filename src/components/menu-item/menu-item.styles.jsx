@@ -6,7 +6,7 @@ const largeMenuItem = css`
 `;
 
 const getMenuItemStyles = props => {
-  if(props.size == 'large'){
+  if(props.size === 'large'){
     return largeMenuItem;
   }
 

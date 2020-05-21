@@ -20,12 +20,7 @@ export const createUserProfileDocument =
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
-  const collectionRef = firestore.collection('users');
-
-
   const snapShot = await userRef.get();
-  const collectionSnapshot = await collectionRef.get();
-
   
   if(!snapShot.exists){
     const {displayName, email } = userAuth;
