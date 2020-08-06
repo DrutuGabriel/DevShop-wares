@@ -35,6 +35,10 @@ export const MenuItemContainer = styled.div`
 
   ${getMenuItemStyles}
 
+  @media screen and (max-width: 800px){
+    height: 200px;
+  }
+
   &:hover {
     cursor: pointer;
 
