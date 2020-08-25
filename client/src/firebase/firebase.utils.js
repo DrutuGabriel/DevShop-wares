@@ -66,6 +66,57 @@ export const getCurrentuser = () => {
   });
 }
 
+export const saveUserCart = async (userId, cartItems) => {
+  if(!userId) return {};
+
+  const userRef = firestore.doc(`users/${userId}`);
+
+  const snapShot = await userRef.get();
+  
+  if(!snapShot.exists){
+    return {}
+  }
+
+  try {
+    // check if cartItems exists
+    const userData = await snapShot.data();
+    if("cartItems" in userData){
+      await userRef.update({cartItems});
+    } else {
+      await userRef.set({cartItems, ...userData});
+    }
+
+    
+  } catch (error){
+    console.log('error setting cart items', error.message);
+  }
+
+}
+
+export const getUserCart = async (userAuth) => 
+{
+  const emptyCart = [];
+
+  if(!userAuth) return emptyCart;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+  const snapShot = await userRef.get();
+  
+  if(!snapShot.exists){
+    return emptyCart
+  }
+
+  const userData = snapShot.data();
+
+  // check if 'cartItems' map exists 
+  if("cartItems" in userData){
+    return userData["cartItems"];
+  }
+
+  return emptyCart;
+}
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

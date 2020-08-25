@@ -14,19 +14,25 @@ import {
   auth, 
   googleProvider, 
   createUserProfileDocument,
-  getCurrentuser
+  getCurrentuser,
+  getUserCart
 } from '../../firebase/firebase.utils';
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData){
+  yield call(getUserCart, userAuth);
+  
   try {
-    const userRef =  yield call(createUserProfileDocument, userAuth, additionalData);
+    const userRef =  yield call(
+      createUserProfileDocument, 
+      userAuth, 
+      additionalData
+    );
     const userSnapshot = yield userRef.get();
 
     yield put(signInSuccess({
       id: userSnapshot.id,
       ...userSnapshot.data()
     }));
-
   } catch(error){
     yield put(signInFailure(error));
   }
