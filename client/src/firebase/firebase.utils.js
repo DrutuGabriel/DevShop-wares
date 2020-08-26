@@ -93,6 +93,19 @@ export const saveUserCart = async (userId, cartItems) => {
 
 }
 
+export const getUserCartRef = async userId => {
+  const cartRef = firestore.collection('carts').where('userId', '==', userId);
+  const snapshot = await cartRef.get();
+
+  if(snapshot.empty){
+    const cartDocRef = firestore.collection('carts').doc();
+    await cartDocRef.set({userId, cartItems: []});
+    return cartDocRef;
+  } else {
+    return snapshot.docs[0].ref;
+  }
+}
+
 export const getUserCart = async (userAuth) => 
 {
   const emptyCart = [];

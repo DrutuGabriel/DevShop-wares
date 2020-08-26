@@ -15,12 +15,9 @@ import {
   googleProvider, 
   createUserProfileDocument,
   getCurrentuser,
-  getUserCart
 } from '../../firebase/firebase.utils';
 
-export function* getSnapshotFromUserAuth(userAuth, additionalData){
-  yield call(getUserCart, userAuth);
-  
+export function* getSnapshotFromUserAuth(userAuth, additionalData){  
   try {
     const userRef =  yield call(
       createUserProfileDocument, 
