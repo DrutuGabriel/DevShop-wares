@@ -9,8 +9,7 @@ import {
 } from './collection-preview.styles';
 
 
-
-const CollectionPreview = ({
+export const CollectionPreview = ({
   title, items, history, match, routeName
 }) => (
   <CollectionPreviewContainer>

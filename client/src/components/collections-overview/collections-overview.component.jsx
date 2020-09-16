@@ -10,7 +10,7 @@ import {
   CollectionsOverviewContainer 
 } from './collections-overview.styles';
 
-const CollectionsOverview = ({collections}) => ( 
+export const CollectionsOverview = ({collections}) => ( 
   <CollectionsOverviewContainer>
     {collections.map(({id, ...otherCollectionProps}) => (
       <CollectionPreview 

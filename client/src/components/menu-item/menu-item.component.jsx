@@ -9,7 +9,7 @@ import {
   ContentSubtitle
 } from './menu-item.styles';
 
-const MenuItem = ({
+export const MenuItem = ({
   title, imageUrl, size, linkUrl, history, match}
 ) =>  (
   <MenuItemContainer size={size}
