@@ -8,27 +8,33 @@ import {selectCartHidden} from '../../redux/cart/cart.selectors';
 import {selectCurrentUser} from '../../redux/user/user.selectors';
 import {signOutStart} from '../../redux/user/user.actions';
 
-import {ReactComponent as Logo} from '../../assets/crown.svg';
+import LogoSvg from '../../assets/devshop-logo.jpg';
 
 import {
   HeaderContainer, 
   LogoContainer, 
   OptionsContainer, 
-  OptionLink 
+  OptionLink
 } from './header.styles';
 
 
 export const Header = ({currentUser, hidden, signOutStart}) => (
   <HeaderContainer>
       <LogoContainer to='/'>
-        <Logo className='logo' />
+        <div 
+          style={{
+            background: `url(${LogoSvg}) no-repeat`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            height: '50px',
+            width: '200px',
+            maxWidth: '33vw'
+          }}
+        ></div>
       </LogoContainer>
       <OptionsContainer>
         <OptionLink to='/shop'>
           SHOP
-        </OptionLink>
-        <OptionLink to='/contact'>
-          CONTACT
         </OptionLink>
         {
           currentUser ? (
