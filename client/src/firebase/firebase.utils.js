@@ -3,14 +3,14 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: "AIzaSyBAJ0huZDTYTEaDvKEhlWrGA7m3t81Anxw",
-  authDomain: "use-firebase-43193.firebaseapp.com",
-  databaseURL: "https://use-firebase-43193.firebaseio.com",
-  projectId: "use-firebase-43193",
-  storageBucket: "use-firebase-43193.appspot.com",
-  messagingSenderId: "756175991561",
-  appId: "1:756175991561:web:e200230c7859789426d9d8",
-  measurementId: "G-XLTW72L4LQ"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PRODUCT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 export const createUserProfileDocument = 
